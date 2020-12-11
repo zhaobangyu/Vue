@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- 数组元素处理 :key进行数据绑定,进行对应的数据更新,并更新顺序-->
+			<ul>
+				<li v-for="item,index in items" :key="index">
+					{{index}} - {{item.message}}
+				</li>
+			</ul>
+			
+			<!-- 对象元素处理 :key进行数据绑定,进行对应的数据更新,并更新顺序-->
+			<ul>
+				<li v-for="value,key in object" :key="key">
+					{{key}} - {{value}}
+				</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			//创建实例
+			var app = new Vue({
+				el: '#app',
+				data: {
+					items: [{
+							message: 'Foo'
+						},
+						{
+							message: 'Bar'
+						}
+					],
+					object:{
+						title:'How to do lists in Vue',
+						author:'Jane Doe',
+						publishedAt:'2016-04-10'
+					}
+				},
+			})
+			
+			// 变更数据
+			function changeData(){
+				app.object = {
+					author:'change data author',
+					title:'change data title',
+					publishedAt:'2016-04-10'
+				};
+			}
+			//创建定时器
+			setTimeout("changeData()", 3000);
+		</script>
+		<style type="text/css">
+		</style>
+	</body>
+</html>

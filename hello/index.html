@@ -1,0 +1,51 @@
+<div id="app">
+    <h1> 商品库存 </h1>
+    <ul>
+        <li v-for="product in products">
+            <input type="number" v-model.number="product.count">
+            名称:{{product.name}} 数量:{{product.count}} 
+            <span v-if="product.count == 0">
+                --已售罄!
+            </span>
+            <button @click="product.count += 1"> 增加商品数量 </button>
+        </li>
+    </ul>
+    <h2> 商品总数量: {{totalProducts}} </h2>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            products: [
+                {
+                    name: "无人机",
+                    count: 10
+                },
+                {
+                    name: "儿童座椅",
+                    count: 100
+                },
+                {
+                    name: "动漫书籍",
+                    count: 0
+                },
+            ]
+        },
+        computed:{
+            totalProducts(){
+                return this.products.reduce((sum, product) =>{
+                    return sum + product.count;
+                }, 0);
+            }
+        }
+        // created(){
+        //     fetch('https://unidemo.dcloud.net.cn/api/news')
+        //         .then(response => response.json())
+        //         .then(json=>{
+        //             this.products = json
+        //         })
+        // }
+    });
+</script>

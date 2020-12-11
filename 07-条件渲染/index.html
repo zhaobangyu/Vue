@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- v-if v-else-if使用 -->
+			<!-- 条件不满足,html实现真正的不渲染 -->
+			<!-- 较少变更的情况下使用v-if -->
+			<div v-if="type === 'A'"> A </div>
+			<div v-else-if="type === 'B'"> B </div>
+			<div v-else-if="type === 'C'"> C </div>
+			<!-- v-show使用 -->
+			<!-- 原理:控制sytle属性display属性,none不显示 -->
+			<!-- 频繁变更的情况下使用v-show -->
+			<ha v-show="ok"> hi vue </ha>
+		</div>
+		<script type="text/javascript">
+			//创建实例
+			var app = new Vue({
+				el: '#app',
+				data: {
+					type: 'A',
+					ok: true
+				}
+			})
+		</script>
+		<style type="text/css">
+		</style>
+	</body>
+</html>

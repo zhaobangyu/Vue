@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- 使用全局注册的组件 -->
+			<button-counter> </button-counter>
+			<!-- 使用局部注册的组件 -->
+			<test> </test>
+		</div>
+		<script type="text/javascript">
+			//全局注册
+			Vue.component('button-counter',{
+				props:['title'],
+				data:function(){
+					return {};
+				},
+				template:'<div> <h1> hi... </h1> </div>',
+				methods:{
+					
+				}
+			});
+			//创建实例
+			var app = new Vue({
+				el: '#app',
+				data: {
+				},
+				//局部注册
+				components:{
+					test:{
+						data:function(){
+							return {
+								counter:0
+							};
+						},
+						template:"<button v-on:click=\"counter+=1\"> 数值: {{counter}} </button>",
+						methods:{
+							clickFun:function(){
+								
+							}
+						}
+					}
+				}
+			})
+		</script>
+		<style type="text/css">
+		</style>
+	</body>
+</html>

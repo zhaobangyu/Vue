@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<button-counter @clicknow="clicknow"> 
+				<h2> my name is h2 </h2>
+			</button-counter>
+			<button-counter @clicknow="clicknow"> </button-counter>
+		</div>
+		<script type="text/javascript">
+			//声明组件(全局注册)
+			Vue.component('button-counter', {
+				props:['title'],
+				data: function(){
+					return {
+						count:0
+					}
+				},
+				template:'<div>\
+							<h1>my name is h1</h1>\
+							<!--声明卡槽,用于外部插入html--> \
+							<slot> </slot>\
+							<button v-on:click="clickFun">{{title}} You clicked me {{count}} times.</button>\
+						</div>',
+				methods:{
+					clickFun:function(){
+						//数量累加
+						this.count++;
+						//向组件外部发送通知,并携带参数
+						this.$emit('clicknow', this.count);
+					}
+				}
+			});
+
+			//创建实例
+			var app = new Vue({
+				el: '#app',
+				data: {
+				},
+				methods:{
+					clicknow:function(val){
+						console.log(val);
+					}
+				}
+			})
+		</script>
+		<style type="text/css">
+		</style>
+	</body>
+</html>
