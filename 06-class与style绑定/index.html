@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<!-- 使用键值对class绑定操作-条件绑定 -->
+			<div v-bind:class="{active: isActive, green: isGreen}" 
+			style="width:100px; height: 100px; text-align: center; line-height: 100px;"> hi vue </div>
+			</br>
+			<!-- 使用数组对class绑定操作-条件绑定 -->
+			<div v-bind:class="[isActive ? 'active' : '', isGreen ? 'green' : '']"
+			style="width:100px; height: 100px; text-align: center; line-height: 100px;"> hi vue </div>
+			</br>
+			<!-- class绑定,多class并存 -->
+			<div 
+			class="test"
+			v-bind:class="[isActive ? 'active' : '', isGreen ? 'green' : '']"
+			style="width:100px; height: 100px; text-align: center; line-height: 100px;"> hi vue </div>
+			<!-- sytle绑定 -->
+			</br>
+			<div 
+			:style="{color:color, fontSize:size, background: isBack ? '#FF0000' : ''}"> hi vue </div>
+		</div>
+		<script type="text/javascript">
+			//创建实例
+			var app = new Vue({
+				el: '#app',
+				data: {
+					isActive:true,
+					isGreen:true,
+					color: "#FFFFFFF",
+					size: "50px",
+					isBack:true
+				}
+			})
+		</script>
+		<style type="text/css">
+			.test{
+				color: #FFFFFFFF;
+			}
+			.active{
+				background:#FF0000
+			}
+			.green{
+				font-size: 30px;
+			}
+		</style>
+	</body>
+</html>

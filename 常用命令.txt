@@ -1,0 +1,9 @@
+//初始化工程
+$vue init webpack my-project 
+//工程结构
+build
+config
+node modules
+src
+static
+test
